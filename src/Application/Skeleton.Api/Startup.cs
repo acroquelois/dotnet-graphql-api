@@ -22,7 +22,7 @@ namespace Skeleton.Api
         {
             services.AddControllers();
                 services.AddDbContext<SkeletonApiContext>(
-                    options => options.UseSqlServer(Configuration.GetConnectionString("BuzzerApiContext")));
+                    options => options.UseSqlServer(Configuration.GetConnectionString("SkeletonApiContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
