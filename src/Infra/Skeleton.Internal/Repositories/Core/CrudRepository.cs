@@ -4,11 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Skeleton.Domain.Core.Models;
-using Skeleton.Domain.Core.Repositories;
+using Skeleton.Domain.Models.Core;
 using Skeleton.Internal.UnitOfWork;
 
-namespace Skeleton.Core.Repositories
+namespace Skeleton.Internal.Repositories.Core
 {
     public class CrudRepository<TEntity, TKey> : ICrudRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>, new()

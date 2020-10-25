@@ -1,12 +1,13 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Skeleton.Domain.Core.Models;
+using Skeleton.Domain.Models;
 using Skeleton.Internal;
+using Skeleton.Internal.Repositories.Core;
+using Skeleton.Internal.UnitOfWork;
 
 namespace Skeleton.Api
 {
@@ -25,6 +26,9 @@ namespace Skeleton.Api
             services.AddControllers();
             services.AddDbContext<SkeletonApiContext>(
                 options => options.UseMySQL(Configuration.GetConnectionString("SkeletonApiContext")));
+            services
+                .AddScoped<ICrudRepository<Question, int>, CrudRepository<Question, int>>()
+                .AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

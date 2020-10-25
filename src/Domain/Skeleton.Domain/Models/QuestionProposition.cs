@@ -1,5 +1,5 @@
-﻿﻿using System.ComponentModel.DataAnnotations.Schema;
-using Skeleton.Domain.Core.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Skeleton.Domain.Models.Core;
 
 namespace Skeleton.Domain.Models
 {

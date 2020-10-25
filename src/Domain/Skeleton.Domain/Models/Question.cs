@@ -1,6 +1,6 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Skeleton.Domain.Core.Models;
+using Skeleton.Domain.Models.Core;
 
 namespace Skeleton.Domain.Models
 {

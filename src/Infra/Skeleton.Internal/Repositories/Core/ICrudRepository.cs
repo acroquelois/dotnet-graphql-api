@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Skeleton.Domain.Core.Models;
+using Skeleton.Domain.Models.Core;
 
-namespace Skeleton.Domain.Core.Repositories
+namespace Skeleton.Internal.Repositories.Core
 {
     public interface ICrudRepository<TEntity, TKey> where TEntity : BaseEntity<TKey>, new()
     {
