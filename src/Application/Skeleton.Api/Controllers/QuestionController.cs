@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Skeleton.Domain.Models;
+using Skeleton.Domain.Repositories.Abstraction;
 using Skeleton.Internal.Repositories.Core;
 
 namespace Skeleton.Api.Controllers

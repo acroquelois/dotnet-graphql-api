@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Skeleton.Internal.UnitOfWork
+namespace Skeleton.Domain.UnitOfWork.Abstraction
 {
     public interface IUnitOfWork
     {

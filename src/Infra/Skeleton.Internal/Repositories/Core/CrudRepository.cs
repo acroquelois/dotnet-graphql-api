@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Skeleton.Domain.Models.Core;
+using Skeleton.Domain.Repositories.Abstraction;
+using Skeleton.Domain.UnitOfWork.Abstraction;
 using Skeleton.Internal.UnitOfWork;
 
 namespace Skeleton.Internal.Repositories.Core
@@ -46,14 +48,14 @@ namespace Skeleton.Internal.Repositories.Core
                 .ToListAsync();
         }
 
-        public void InsertAsync(TEntity entity)
+        public async Task InsertAsync(TEntity entity)
         { 
-            Set.AddAsync(entity);
+            await Set.AddAsync(entity);
         }
 
-        public void InsertRangeAsync(IEnumerable<TEntity> entity)
+        public async Task InsertRangeAsync(IEnumerable<TEntity> entity)
         {
-            Set.AddRangeAsync(entity);
+            await Set.AddRangeAsync(entity);
         }
 
         public void Update(TEntity entity)
