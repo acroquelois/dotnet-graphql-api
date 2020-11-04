@@ -8,7 +8,7 @@ using Skeleton.Internal;
 namespace Skeleton.Internal.Migrations
 {
     [DbContext(typeof(SkeletonApiContext))]
-    [Migration("20201026095324_init")]
+    [Migration("20201103235221_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,6 +87,24 @@ namespace Skeleton.Internal.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("QuestionPropositions");
+                });
+
+            modelBuilder.Entity("Skeleton.Domain.Models.Users.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Login")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("MotDePasse")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Skeleton.Domain.Models.Question", b =>

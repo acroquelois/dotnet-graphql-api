@@ -1,6 +1,6 @@
 ﻿namespace Skeleton.Api.GraphQL.Query
 {
-    public class GraphQlQueryDto
+    public class GraphQLQueryDto
     {
         public string OperationName { get; set; }
         public string NamedQuery { get; set; }

@@ -11,6 +11,7 @@ namespace Skeleton.Api.GraphQL.Type
             Field(x => x.Libelle);
             Field<QuestionCategorieType>(nameof(Question.QuestionCategorie));
             Field<QuestionAnswerType>(nameof(Question.QuestionAnswer));
+            Field<ListGraphType<QuestionPropositionType>>(nameof(Question.ListQuestionProposition));
         }
     }
 }

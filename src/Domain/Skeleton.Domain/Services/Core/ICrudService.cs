@@ -11,7 +11,7 @@ namespace Skeleton.Domain.Services.Core
     {
         Task<TEntity> GetAsync(TKey id, bool tracking = false);
 
-        Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter, bool track);
+        Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter, bool track = false);
         
         Task<List<TEntity>> ListAsync(Expression<Func<TEntity, bool>> filter = null);
 

@@ -34,6 +34,20 @@ namespace Skeleton.Internal.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Login = table.Column<string>(maxLength: 50, nullable: true),
+                    MotDePasse = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Questions",
                 columns: table => new
                 {
@@ -100,6 +114,9 @@ namespace Skeleton.Internal.Migrations
         {
             migrationBuilder.DropTable(
                 name: "QuestionPropositions");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Questions");
