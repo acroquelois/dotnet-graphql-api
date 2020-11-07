@@ -3,8 +3,7 @@
     public class UserDto
     {
         public int Id { get; set; }
-        public int ContactId { get; set; }
         public string Login { get; set; }
-        public string MotDePasse { get; set; }
+        public string Password { get; set; }
     }
 }

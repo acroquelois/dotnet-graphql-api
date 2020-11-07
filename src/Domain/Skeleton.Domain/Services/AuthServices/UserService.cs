@@ -24,7 +24,7 @@ namespace Skeleton.Domain.Services.AuthServices
         
         public async Task<User> InsertAsync(User entity)
         {
-            entity.MotDePasse = _passwordHasher.HashPassword(new User(), entity.MotDePasse);
+            entity.Password = _passwordHasher.HashPassword(new User(), entity.Password);
             await _repository.InsertAsync(entity);
             await _unitOfWork.CommitAsync();
             return entity;

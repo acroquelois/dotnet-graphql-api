@@ -54,7 +54,7 @@ namespace Skeleton.Domain.Services.AuthServices
 
                 _logger.LogDebug("Found user informations: {@user}", user);
 
-                PasswordVerificationResult result = _passwordHasher.VerifyHashedPassword(user, user.MotDePasse, userAuth.MotDePasse.Trim());
+                PasswordVerificationResult result = _passwordHasher.VerifyHashedPassword(user, user.Password, userAuth.Password.Trim());
 
                 if (result == PasswordVerificationResult.Failed)
                 {

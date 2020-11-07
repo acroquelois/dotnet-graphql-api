@@ -8,6 +8,6 @@ namespace Skeleton.Domain.Models.Users
     {
         [StringLength(50)]
         public string Login { get; set; }
-        public string MotDePasse { get; set; }
+        public string Password { get; set; }
     }
 }

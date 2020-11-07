@@ -40,7 +40,7 @@ namespace Skeleton.Internal.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Login = table.Column<string>(maxLength: 50, nullable: true),
-                    MotDePasse = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

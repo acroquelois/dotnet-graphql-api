@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Types;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Skeleton.Api.GraphQL.Query;
 
 namespace Skeleton.Api.Controllers
 {
+    [Authorize]
     [ApiController, Route("graphql")]
     public class GraphQLController : ControllerBase
     {

@@ -5,15 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Skeleton.Domain.Dtos.Users;
 using Skeleton.Domain.Enum;
 using Skeleton.Domain.Models.Users;
 using Skeleton.Domain.Services.AuthServices;
 using Skeleton.Domain.Services.AuthServices.Abstractions;
-using Skeleton.Domain.Services.Core;
 
 namespace Skeleton.Api.Controllers
 {
-    [Authorize]
     [Route("[controller]"), ApiController]
     public class AuthController : ControllerBase
     {
@@ -33,13 +32,13 @@ namespace Skeleton.Api.Controllers
         /// <returns></returns>
         [AllowAnonymous, HttpPost("token")]
         public async Task<ActionResult<TokenResponse>> Token(
-            [FromBody] UserAuthDto userAuth,
+            [FromBody] UserDto userAuth,
             [FromServices] IAuthService authService)
         {
             try
             {
 
-                var (authError, token) = await authService.LoginAsync(new User { Login = userAuth.Mail, MotDePasse = userAuth.Password});
+                var (authError, token) = await authService.LoginAsync(new User { Login = userAuth.Login, Password = userAuth.Password});
 
                 if (authError == AuthError.EmptyUsername)
                 {
@@ -62,13 +61,13 @@ namespace Skeleton.Api.Controllers
 
         [AllowAnonymous, HttpPost("resetpassword")]
         public async Task<ActionResult<TokenResponse>> ResetPasswordBo(
-            [FromBody] UserAuthDto userAuth,
+            [FromBody] UserDto userAuth,
             [FromServices] IAuthService authService)
         {
             string resetToken = "";
             try
             {
-                resetToken = await authService.CreateResetToken(userAuth.Mail);
+                resetToken = await authService.CreateResetToken(userAuth.Login);
                 if (string.IsNullOrEmpty(resetToken))
                 {
                     return Unauthorized(new { Message = "L'email n'existe pas" });
@@ -85,7 +84,7 @@ namespace Skeleton.Api.Controllers
 
         [HttpPost("password")]
         public async Task<ActionResult<TokenResponse>> Password(
-            [FromBody] UserAuthDto userAuth,
+            [FromBody] UserDto userAuth,
             [FromServices] UserService userService,
             [FromServices] IPasswordHasher<User> passwordHasher)
         {
@@ -102,19 +101,27 @@ namespace Skeleton.Api.Controllers
             {
                 return Unauthorized(new { Message = "token invalide" });
             }
-            user.MotDePasse = passwordHasher.HashPassword(user, userAuth.Password);
+            user.Password = passwordHasher.HashPassword(user, userAuth.Password);
             await userService.Update(user);
 
             return NoContent();
         }
+        
+        [HttpPost("signup")]
+        public IActionResult Post([FromBody] User question)
+        {
+            try
+            {
+                _userService.InsertAsync(question);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
-
-    public class UserAuthDto
-    {
-        public string Mail { get; set; }
-
-        public string Password { get; set; }
-    }
+    
 
     public class TokenResponse
     {

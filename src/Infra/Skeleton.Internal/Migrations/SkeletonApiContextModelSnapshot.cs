@@ -97,7 +97,7 @@ namespace Skeleton.Internal.Migrations
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("MotDePasse")
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

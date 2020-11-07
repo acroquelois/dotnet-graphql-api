@@ -8,7 +8,7 @@ using Skeleton.Internal;
 namespace Skeleton.Internal.Migrations
 {
     [DbContext(typeof(SkeletonApiContext))]
-    [Migration("20201103235221_init")]
+    [Migration("20201107192240_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,7 +99,7 @@ namespace Skeleton.Internal.Migrations
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("MotDePasse")
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
