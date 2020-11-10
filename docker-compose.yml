@@ -6,6 +6,8 @@ services:
     environment:
       MYSQL_DATABASE: skeleton
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - '3306:3306'
     volumes:
       - db-data:/var/lib/mysql
   graphql-skeleton:
@@ -13,7 +15,5 @@ services:
     container_name: graphql-skeleton-api
     ports:
       - '5000:5000'
-    links:
-      - mysql-db:db
 volumes:
   db-data:
