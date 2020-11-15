@@ -10,7 +10,7 @@ using Skeleton.Domain.Repositories.Abstraction;
 using Skeleton.Domain.UnitOfWork.Abstraction;
 using Skeleton.Internal.UnitOfWork;
 
-namespace Skeleton.Internal.Repositories.Core
+namespace Skeleton.Internal.Repositories
 {
     public class QuestionRepository: IQuestionRepository
     {

@@ -1,4 +1,3 @@
-using System;
 using GraphQL;
 using GraphQL.SystemTextJson;
 using GraphQL.Server;
@@ -18,7 +17,7 @@ using Skeleton.Domain.Repositories.Abstraction;
 using Skeleton.Domain.Services;
 using Skeleton.Domain.UnitOfWork.Abstraction;
 using Skeleton.Internal;
-using Skeleton.Internal.Repositories.Core;
+using Skeleton.Internal.Repositories;
 using Skeleton.Internal.UnitOfWork;
 
 namespace Skeleton.Api
