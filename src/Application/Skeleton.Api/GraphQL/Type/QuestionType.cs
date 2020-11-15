@@ -7,11 +7,12 @@ namespace Skeleton.Api.GraphQL.Type
     {
         public QuestionType()
         {
+            Name = "Question";
             Field(x => x.Id,type:typeof(IdGraphType));
             Field(x => x.Libelle);
-            Field<QuestionCategorieType>(nameof(Question.QuestionCategorie));
-            Field<QuestionAnswerType>(nameof(Question.QuestionAnswer));
-            Field<ListGraphType<QuestionPropositionType>>(nameof(Question.ListQuestionProposition));
+            Field(x => x.QuestionCategorie, type: typeof(QuestionCategorieType));
+            Field(x => x.QuestionAnswer, type: typeof(QuestionAnswerType));
+            Field(x => x.ListQuestionProposition, type: typeof(ListGraphType<QuestionPropositionType>));
         }
     }
 }

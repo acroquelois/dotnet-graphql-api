@@ -1,22 +1,38 @@
-﻿using GraphQL;
+﻿using System;
+using GraphQL;
 using GraphQL.Types;
+using Microsoft.Extensions.DependencyInjection;
 using Skeleton.Api.GraphQL.Type;
-using Skeleton.Domain.Models;
-using Skeleton.Domain.Services.Core;
+using Skeleton.Domain.Services;
 
 namespace Skeleton.Api.GraphQL.Query
 {
     public class QuestionQuery: ObjectGraphType
     {
-        private ICrudService<Question, int> _service;
-        public QuestionQuery(ICrudService<Question, int> service)
+        public QuestionQuery()
         {
-            _service = service;
             int id = 0;
             Field<ListGraphType<QuestionType>>(
-                name: "questions", resolve: (context) =>
-                    _service.ListAsync()
+                name: "questions", 
+                arguments: new QueryArguments(new 
+                    QueryArgument<IntGraphType> { Name = "limit" }),
+                resolve: (context) =>
+                {
+                    try
+                    {
+                        var limit = context.GetArgument<int>("limit");
+                        var service = context.RequestServices.GetRequiredService<IQuestionService>();
+                        var result = service.ListAsync(limit).Result;
+                        return result;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        return null;
+                    }
+                }
             );
+            
             Field<QuestionType>(
                 name: "question",
                 arguments: new QueryArguments(new 
@@ -24,7 +40,8 @@ namespace Skeleton.Api.GraphQL.Query
                 resolve: context =>
                 {
                     id = context.GetArgument<int>("id");
-                    return _service.GetAsync(id);
+                    var service = context.RequestServices.GetRequiredService<IQuestionService>();
+                    return service.GetAsync(id);
                 }
             );
         }
