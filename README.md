@@ -1,4 +1,4 @@
-[![Docker](https://img.shields.io/docker/v/acroquelois/skeleton-graphql-dotnet.svg)](https://hub.docker.com/repository/docker/acroquelois/skeleton-graphql-dotnet)
+[![Docker](https://img.shields.io/docker/v/acroquelois/skeleton-graphql-dotnet.svg)](https://hub.docker.com/repository/docker/acroquelois/skeleton-dotnet-graphql)
 # Skeleton-dotnet-graphql
 
 GraphQL API in dotnet core 3.1
