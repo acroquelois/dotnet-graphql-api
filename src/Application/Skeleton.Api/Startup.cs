@@ -1,3 +1,4 @@
+using System;
 using GraphQL;
 using GraphQL.SystemTextJson;
 using GraphQL.Server;
@@ -37,7 +38,7 @@ namespace Skeleton.Api
 
             //DbContext
             services.AddDbContextPool<SkeletonApiContext>(
-                options => options.UseNpgsql(Configuration.GetConnectionString("SkeletonApiContext")));
+                options => options.UseNpgsql(Environment.GetEnvironmentVariable("PGDB_CONNECTION")));
             // Services
             services
                 .AddScoped<IQuestionService, QuestionService>();

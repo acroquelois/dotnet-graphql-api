@@ -2,6 +2,7 @@
 WORKDIR /app
 EXPOSE 5000
 ENV ASPNETCORE_URLS=http://*:5000
+ENV PGDB_CONNECTION="Host=localhost;Username=postgres;Password=postgrespassword;Database=skeleton"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
