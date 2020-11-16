@@ -9,7 +9,7 @@ namespace Skeleton.Api.GraphQL.Type.InputType
         {
             Name = "QuestionInput";
             Field(x => x.Libelle);
-            Field(x => x.QuestionCategorieId);
+            Field(x => x.QuestionCategorieId, nullable: true);
             Field<QuestionCategorieInputType>(nameof(Question.QuestionCategorie));
             Field<QuestionAnswerInputType>(nameof(Question.QuestionAnswer));
             Field<ListGraphType<QuestionPropositionInputType>>(nameof(Question.ListQuestionProposition));
